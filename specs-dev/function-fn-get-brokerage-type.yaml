@@ -1,0 +1,55 @@
+include:
+- ./func/*
+kind: ArchiveUploadSpec
+name: func-8MjR
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: fn-get-brokerage-type-3224eef5-687a-4b4f-beee-5cc6cacc7d2c
+  namespace: default
+spec:
+  deployment:
+    checksum: {}
+  environment:
+    name: env-get-brokerage-type
+    namespace: default
+  source:
+    checksum: {}
+    type: url
+    url: archive://func-8MjR
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2022-12-13T12:18:25Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: fn-get-brokerage-type
+  namespace: default
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: newdeploy
+      MaxScale: 3
+      MinScale: 1
+      SpecializationTimeout: 120
+      TargetCPUPercent: 80
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: env-get-brokerage-type
+    namespace: default
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    functionName: main.get_enums
+    packageref:
+      name: fn-get-brokerage-type-3224eef5-687a-4b4f-beee-5cc6cacc7d2c
+      namespace: default
+  requestsPerPod: 1
+  resources: {}
