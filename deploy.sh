@@ -1,5 +1,4 @@
-#!/usr/bin/bash
 fission spec init
-fission env create --spec --name env-get-brokerage-type --image nexus.sigame.com.br/fission-cx-env-3.8:0.0.3 --builder nexus.sigame.com.br/fission-cx-builder-3.8:0.0.3
-fission fn create --spec --name fn-get-brokerage-type --env env-get-brokerage-type --src "./func/*" --entrypoint main.get_enums --executortype newdeploy
-fission route create --spec --name rt-get-brokerage-type --method GET --url /enum/brokerage_type --function fn-get-brokerage-type
+fission env create --spec --name dash-enum-broker-tp-env --image nexus.sigame.com.br/fission-ligadash-enum-brokerage-types:0.1.0 --poolsize 0 --version 3 --imagepullsecret "nexus-v3" --spec
+fission fn create --spec --name dash-enum-broker-tp-fn --env dash-enum-broker-tp-env --code fission.py --targetcpu 80 --executortype newdeploy --maxscale 3 --requestsperpod 10000 --spec
+fission route create --spec --name dash-enum-broker-tp-rt --method GET --url /enum/brokerage_type --function dash-enum-broker-tp-fn
