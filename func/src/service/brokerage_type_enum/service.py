@@ -1,9 +1,9 @@
-from src.core.interfaces.service.brokerage_type_enum.interface import (
+from func.src.core.interfaces.service.brokerage_type_enum.interface import (
     IBrokerageTypeEnumService,
 )
-from src.domain.response.model import ResponseModel
-from src.domain.response.status_code.enums import StatusCode
-from src.repository.brokerage_type_enum.repository import BrokerageTypeEnumRepository
+from func.src.domain.response.model import ResponseModel
+from func.src.domain.response.status_code.enums import StatusCode
+from func.src.repository.brokerage_type_enum.repository import BrokerageTypeEnumRepository
 
 
 class BrokerageTypeEnumService(IBrokerageTypeEnumService):

@@ -2,23 +2,24 @@ apiVersion: fission.io/v1
 kind: Environment
 metadata:
   creationTimestamp: null
-  name: env-get-brokerage-type
+  name: dash-enum-broker-tp-env
   namespace: default
 spec:
   builder:
-    command: build
     container:
       name: ""
       resources: {}
-    image: nexus.sigame.com.br/fission-cx-builder-3.8:0.0.3
-  imagepullsecret: "nexus-v3"
+  imagepullsecret: nexus-v3
   keeparchive: false
   resources: {}
   runtime:
-    image: nexus.sigame.com.br/fission-cx-env-3.8:0.0.3
+    container:
+      name: ""
+      resources: {}
+    image: nexus.sigame.com.br/fission-ligadash-enum-brokerage-types:0.1.0
     podspec:
       containers:
-        - name: env-get-brokerage-type
+        - name: dash-enum-broker-tp-env
           env:
             - name: MNEMOSINE_REDIS_HOST
               value: "redis://bnd:jkl321pqr@172.30.11.235:6379"

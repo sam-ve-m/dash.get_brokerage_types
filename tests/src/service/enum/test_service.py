@@ -1,8 +1,8 @@
 from unittest.mock import patch
 import pytest
 
-from src.service.brokerage_type_enum.service import BrokerageTypeEnumService
-from src.repository.brokerage_type_enum.repository import BrokerageTypeEnumRepository
+from func.src.service.brokerage_type_enum.service import BrokerageTypeEnumService
+from func.src.repository.brokerage_type_enum.repository import BrokerageTypeEnumRepository
 
 from tests.test_doubles.doubles import (
     enum_service_get_enums_response_ok,
